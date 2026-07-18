@@ -13,11 +13,6 @@ Because this ecosystem runs entirely as a static frontend on GitHub Pages with n
 3. **Direct URL Bypassing Guard Hooks:** If an unauthorized user attempts to bypass the login portal by typing a subpage address directly (e.g., `vaibhav.html`), a script hook checking `sessionStorage` instantly denies access, issues an alert popup, and redirects the browser back to `index.html`.
 4. **Privacy-First Telemetry Logging:** All plain text evaluation statements have been scrubbed from production console operations to secure input metrics. Operational logging prints anonymous status events, ensuring zero tracking profile line leaks during active field entry loops.
 
-### 🔑 System Authorization Credentials
-*   **Vaibhav Access Passkey:** `vaibhav123`
-*   **Akash Access Passkey:** `akash123`
-*   **Shalini Access Passkey:** `shalini123`
-
 ---
 
 ## 📂 Core Repository Architecture
