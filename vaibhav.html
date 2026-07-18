@@ -187,6 +187,7 @@
                     </ol>
                     <div style="display: flex; gap: 10px; margin-top: 15px;">
                         <button onclick="downloadCSVData()" class="btn-action btn-csv">Download Updated CSV</button>
+                        <button onclick="navigator.clipboard.writeText(userTrackingLogs.map(r=>Object.values(r).join(',')).join('\n')); alert('CSV content copied to clipboard! Paste directly into GitHub.');" style="background: #475569;" class="btn-action">Copy Raw CSV Text</button>
                         <button onclick="clearTrackingLogs()" style="background: #991b1b; color: white;" class="btn-action">Reset Cache</button>
                     </div>
                 </div>
