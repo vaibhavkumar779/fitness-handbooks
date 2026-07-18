@@ -5,13 +5,14 @@ A fully responsive, free static fitness tracking ecosystem hosted on GitHub Page
 ## 📂 Repository File Architecture
 
 Ensure your repository contains exactly these files at the root level:
+```bash
 ├── index.html          <- Portal Selector Gateway
 ├── style.css           <- Unified Styling Tokens & Color Themes
 ├── vaibhav.html        <- Vaibhav's Lean Mass Dashboard
 ├── akash.html          <- Akash's Fat Loss Dashboard
 ├── vaibhav_data.csv    <- Vaibhav's Core Metrics History
 └── akash_data.csv      <- Akash's Core Metrics History
-
+```
 ---
 
 ## 🚀 Instant Deployment Guide (Zero Cost)
