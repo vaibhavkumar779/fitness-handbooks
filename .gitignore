@@ -1,0 +1,18 @@
+# Operating System System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Code Editor Configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Temporary Crash Logs & Local Backups
+*.log
+*.tmp
+*.bak
