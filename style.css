@@ -101,7 +101,7 @@ body {
 .btn-shalini { background: #8b5cf6 !important; }
 .btn-auth-trigger:hover { opacity: 0.9; }
 
-/* Dashboard Pages Layout */
+/* Dashboard Pages layout */
 .dashboard-header { background: var(--header-gradient); padding: 20px; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 .header-title h1 { margin: 0; font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 700; letter-spacing: -0.02em; }
 .header-title p { margin: 4px 0 0 0; color: var(--text-muted); font-size: 0.85rem; }
@@ -120,7 +120,7 @@ body {
 .card { background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border); padding: 16px; margin-bottom: 16px; box-sizing: border-box; }
 .card h2 { margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 12px; color: var(--text-light); }
 
-/* Scrollable Tables Container */
+/* Data Tables Scroll Container */
 .table-wrapper { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin: 12px 0; -webkit-overflow-scrolling: touch; }
 table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; min-width: 600px; }
 th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: normal; }
@@ -136,7 +136,7 @@ th { background: var(--table-th-bg); color: var(--table-th-text); font-weight: 6
 .btn-action.btn-csv { background: var(--accent-success); }
 .back-portal-link { display: inline-block; margin-bottom: 12px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
 
-/* Modal Architecture */
+/* Modal Architecture Styles */
 .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; z-index: 999; padding: 16px; box-sizing: border-box; }
 .modal-overlay.active { display: flex; }
 .modal-window { background: #1e293b; border: 1px solid var(--border); padding: 24px; border-radius: 20px; max-width: 360px; width: 100%; text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); box-sizing: border-box; }
