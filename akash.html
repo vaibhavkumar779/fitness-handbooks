@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash - Interactive Fat Loss Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="akash-theme">
+    <div class="container">
+        <a href="index.html" class="back-portal-link">← Back to Portal Gateway</a>
+        
+        <header class="dashboard-header">
+            <div class="header-title">
+                <h1>Akash's Fat Loss Command Center</h1>
+                <p>Target Framework: 71kg → 64kg | Target Horizon: January 30, 2027</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-pill"><span>Energy Deficit</span><strong>1700</strong></div>
+                <div class="stat-pill"><span>Protein Target</span><strong>128g</strong></div>
+                <div class="stat-pill"><span>Pelvic Strain</span><strong style="color: var(--accent-success);">Zero</strong></div>
+            </div>
+        </header>
+
+        <nav class="tab-navigation">
+            <button class="nav-tab active" onclick="switchTab('profile')">1. Target Framework & Profile</button>
+            <button class="nav-tab" onclick="switchTab('diet')">2. Nutrition & Gut Management</button>
+            <button class="nav-tab" onclick="switchTab('workout')">3. Low-Impact Calisthenics</button>
+            <button class="nav-tab" onclick="switchTab('tracker')">4. Dynamic Analytics & CSV Engine</button>
+        </nav>
+
+        <!-- TAB 1: PROFILE -->
+        <div id="page-profile" class="dashboard-page active">
+            <div class="card">
+                <h2>Baseline System Variables & Operational Targets</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Target Variable</th><th>Baseline Value</th><th>Operational Strategy</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Age / Gender</strong></td><td>24 / Male</td><td>Optimized metabolic baseline tracking</td></tr>
+                            <tr><td><strong>Height Dimensions</strong></td><td>165 cm</td><td>Fixed structural scale factor</td></tr>
+                            <tr><td><strong>Current Mass Baseline</strong></td><td>71 kg</td><td>Initial layout check for calorie deficit deployment</td></tr>
+                            <tr><td><strong>Goal Mass Target</strong></td><td>64 kg</td><td>Adipose tissue reduction while protecting lean structure</td></tr>
+                            <tr><td><strong>Calculated BMI Baseline</strong></td><td>26.08 (Overweight)</td><td>Targeting reduction down to a normal healthy frame (23.51)</td></tr>
+                            <tr><td><strong>Cardio Input Baseline</strong></td><td>3,000 steps/day</td><td>Target Acceleration: 8,000+ steps daily via split circuits</td></tr>
+                            <tr><td><strong>Physical Limitations</strong></td><td>Childhood Arm Defect & Piles History</td><td>Symmetry focus triggers; strict zero straining rules</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Calculated Nutritional Deficit Blueprints</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Macro Block</th><th>Calculation Basis</th><th>Target Intake</th><th>Caloric Weight</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Daily Energy (Deficit Budget)</strong></td><td>Bodyweight x 24 kcal</td><td><strong>1700 kcal</strong></td><td>100% Total Cap</td></tr>
+                            <tr><td><strong>Daily Protein Allocation</strong></td><td>Bodyweight x 1.8g</td><td><strong>128g</strong></td><td>512 kcal (30.1%)</td></tr>
+                            <tr><td><strong>Daily Lipid Allocation</strong></td><td>Bodyweight x 0.8g</td><td><strong>57g</strong></td><td>513 kcal (30.2%)</td></tr>
+                            <tr><td><strong>Daily Carbohydrates Allocation</strong></td><td>Remaining Energy Units</td><td><strong>169g</strong></td><td>675 kcal (39.7%)</td></tr>
+                            <tr><td><strong>Dietary Fiber Minimum Cap</strong></td><td>Stool Safety Protocol</td><td><strong>35 grams</strong></td><td>Essential GI framework tracking</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: NUTRITION & GUT CODE -->
+        <div id="page-diet" class="dashboard-page">
+            <div class="card">
+                <h2>Time-Wise Meal Integration & GI Comfort Schedule</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Time Block</th><th>Meal / Hydration Element</th><th>Target Nutritional Strategy</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>06:30 AM</strong></td><td>Wake Up Protocol</td><td>2 Glasses of warm water immediately to stimulate healthy digestion.</td></tr>
+                            <tr><td><strong>07:00 AM</strong></td><td>Home Workout Phase</td><td>30-45 Mins low-impact morning calisthenics on an empty stomach.</td></tr>
+                            <tr><td><strong>09:00 AM</strong></td><td>Breakfast Window</td><td>High Protein (Egg Whites / Sprouted Moong). High satiety index.</td></tr>
+                            <tr><td><strong>12:30 PM</strong></td><td>Lunch Window</td><td>2 Wheat Rotis + High Fiber Cooked Sabzi + Curd + Large Salad bowl.</td></tr>
+                            <tr><td><strong>04:00 PM</strong></td><td>Evening Snack</td><td>1 High Fiber Fruit (Apple/Papaya) + 30g Roasted Chana + 1 Cup Tea.</td></tr>
+                            <tr><td><strong>06:30 PM</strong></td><td>Cardio Step Split</td><td>30-minute steady paced outdoor walk to reach daily step goals.</td></tr>
+                            <tr><td><strong>08:00 PM</strong></td><td>Dinner Window</td><td>1 Cup Rice or 1 Roti paired with high protein (Paneer or Soya pieces).</td></tr>
+                            <tr><td><strong>09:30 PM</strong></td><td>Piles Prophylaxis</td><td>1 tsp Isabgol (Psyllium Husk) mixed in warm water to ease morning digestion.</td></tr>
+                            <tr><td><strong>10:00 PM</strong></td><td>Sleep Protocol</td><td>8 Hours of complete sleep to optimize natural fat loss.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>7-Day High-Protein Eggitarian Menu Layout</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Day</th><th>Breakfast (9 AM)</th><th>Lunch (12:30 PM)</th><th>Snack (4 PM)</th><th>Dinner (8 PM)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>MON</strong></td><td>3 Egg Whites + 1 Slice Whole Wheat Toast</td><td>2 Rotis + Sprouted Moong Dal + Large Salad + 100g Curd</td><td>1 Apple + 1 Cup Tea + 30g Chana</td><td>1 Cup Rice + 100g Grilled Paneer + Spinach</td></tr>
+                            <tr><td><strong>TUE</strong></td><td>1 Cup Veg Dalia cooked with 30g Paneer</td><td>2 Rotis + Rajma + Cooked Cauliflower + Salad</td><td>1 Banana + 100g Low-fat Curd</td><td>1.5 Cups Soya Chunks Bhurji + Greens</td></tr>
+                            <tr><td><strong>WED</strong></td><td>3 Egg Whites Veggie Scramble + 1 Toast</td><td>2 Rotis + Chole Curry + Carrots/Peas + Salad</td><td>1 Guava + 40g Chana + 1 Cup Tea</td><td>1 Cup Rice + Moong Dal + 100g Paneer Bhurji</td></tr>
+                            <tr><td><strong>THU</strong></td><td>1.5 Cups Oats cooked in water with 150ml Milk</td><td>2 Rotis + Lauki Sabzi + 100g Curd + Big Salad</td><td>1 Orange + 3 Hard Boiled Egg Whites</td><td>120g Soya Chaap Curry + 1 Roti + Salad</td></tr>
+                            <tr><td><strong>FRI</strong></td><td>3 Egg Whites + 1 Slice Whole Wheat Toast</td><td>2 Rotis + Light Dal Fry + Cabbage Sabzi + Salad</td><td>1 Apple + 1 Cup Tea + 30g Chana</td><td>1 Cup Rice + 100g Paneer Tikka (Home Cooked)</td></tr>
+                            <tr><td><strong>SAT</strong></td><td>3 Moong Dal Chillas + 30g Paneer stuffing</td><td>2 Rotis + Black Chana Curry + 100g Curd + Salad</td><td>1 Cup Buttermilk + 1 Banana</td><td>150g Soya Chunks Pulav + Veg Raita bowl</td></tr>
+                            <tr><td><strong>SUN</strong></td><td>3 Egg Whites Veggie Omelette + Sprouts</td><td>2 Rotis + Mixed Dal + Seasonal Greens + Salad</td><td>1 Fresh Fruit + 5 Raw Almonds</td><td>1 Cup Rice + Yellow Dal + 100g Paneer Saag</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="alert-box danger">
+                <strong>Strict Strategic Limitations Engine:</strong> Eliminate all multi-refined structures (Maida biscuits, bakery items) to protect the lower GI tract. Zero heavy red spices allowed. Keep daily fluids strictly at 3.0 Liters minimum.
+            </div>
+        </div>
+
+        <!-- TAB 3: WORKOUT -->
+        <div id="page-workout" class="dashboard-page">
+            <div class="card">
+                <h2>7-Day Zero-Equipment Home Fitness Matrix</h2>
+                <div class="alert-box danger">
+                    <strong>Valsalva Pressure Prevention Metric:</strong> Under no circumstances do you hold your breath during push adjustments. Exhale completely on internal structural extension movements to prevent pelvic floor arterial vascular pooling spikes.
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Target Day</th><th>Focus Split</th><th>Selected Exercise Movements</th><th>Target Sets x Reps</th><th>Biomechanical Strategy</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Monday</strong></td><td>Full Body Tone</td><td>Bodyweight Box Squats, Incline Wall Push-ups, Glute Bridges</td><td>3 Sets x 12-15 Reps</td><td>Wall push-ups reduce the structural load on your weaker right arm while working your chest.</td></tr>
+                            <tr><td><strong>Tuesday</strong></td><td>Core & Steps Boost</td><td>Standing Knee-to-Elbow Crunches, Superman Holds, Steady Outdoor Walk</td><td>3 Sets x 15 Reps + 45m Walk</td><td>Avoid standard floor crunches entirely to prevent pressure build-up in your pelvic floor.</td></tr>
+                            <tr><td><strong>Wednesday</strong></td><td>Right Arm Balance</td><td>Unilateral Right-Arm Water Bottle Rows, Towel Isometric Contractions</td><td>4 Sets x 15 Reps (Right Only)</td><td>Isolate your right arm first to build strength. Match the rep count on your left side without pushing it to failure.</td></tr>
+                            <tr><td><strong>Thursday</strong></td><td>Mobility Reset</td><td>Gentle Cat-Cow Stretches, Thoracic Rotations, LISS Walking</td><td>3 Sets x 10 Reps + 30m Walk</td><td>Active recovery routine to increase blood flow and keep your digestion moving smoothly.</td></tr>
+                            <tr><td><strong>Friday</strong></td><td>Lower Body Base</td><td>Chair Squats, Single-Leg Glute Bridges, Standing Calf Raises</td><td>3 Sets x 15 Reps</td><td>Builds lower body strength and balances your core without needing heavy weights.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: TRACKER & CSV ENGINE -->
+        <div id="page-tracker" class="dashboard-page">
+            <div class="grid-2">
+                <div class="card">
+                    <h2>Log Daily Progress Metrics</h2>
+                    <form id="metricsForm" onsubmit="handleLogSubmission(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="logDate">Logging Date</label>
+                                <input type="date" id="logDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="logWeight">Weight (kg)</label>
+                                <input type="number" id="logWeight" step="0.05" min="50" max="95" placeholder="71.0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="logSteps">Steps Logged</label>
+                                <input type="number" id="logSteps" min="0" max="40000" placeholder="8500" required>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="logSleep">Sleep Hours</label>
+                                <input type="number" id="logSleep" step="0.5" min="4" max="12" placeholder="8" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="logPiles">GI / Piles Discomfort Status</label>
+                                <select id="logPiles">
+                                    <option value="1">1 - Clear / No Issues</option>
+                                    <option value="2">2 - Minor Sensation Alert</option>
+                                    <option value="3">3 - Irritation Warn (Increase Fluids)</option>
+                                    <option value="4">4 - High Inflammation (Halt Training)</option>
+                                    <option value="5">5 - Severe Flare-up (Rest Only)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-action">Commit Data Entry</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>GitHub CSV Engine Sync Utility</h2>
+                    <p class="helper-text">Maintain full data history completely free using your repository files:</p>
+                    <ol style="padding-left: 20px; font-size: 0.85rem; line-height: 1.4; color: var(--text-muted); margin: 10px 0;">
+                        <li>Click the button below to compile your logs into a standard clean layout.</li>
+                        <li>Save the file directly as <code style="color: #2dd4bf;">akash_data.csv</code>.</li>
+                        <li>Upload or commit this file into your GitHub repo root folder to permanently back up your progress.</li>
+                    </ol>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button onclick="downloadCSVData()" class="btn-action btn-csv">Download Updated CSV</button>
+                        <button onclick="clearTrackingLogs()" style="background: #991b1b; color: white;" class="btn-action">Reset Cache</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Historical Metrics Log Table</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date Logged</th>
+                                <th>Mass Metrics</th>
+                                <th>Net Variant</th>
+                                <th>Step Volume</th>
+                                <th>Sleep Volume</th>
+                                <th>GI Safety Assessment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trackerTableRows"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Monthly Food Budget System (~₹4,000 Cap Limits)</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Target Category Allocation</th><th>Items Included Inventory</th><th>Projected Investment Share</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Eggitarian Foundations</strong></td><td>Farm Eggs (16 weekly allocation) + Bulk Soya components</td><td>₹670</td></tr>
+                            <tr><td><strong>Dairy Blocks</strong></td><td>Low-Fat Paneer stocks + Standard Toned Milk + Curd settings</td><td>₹1,000</td></tr>
+                            <tr><td><strong>Grains & Staples</strong></td><td>Whole Chakki Atta, Oats, Dalia, Poha, Basmati Rice variants</td><td>₹800</td></tr>
+                            <tr><td><strong>High-Fiber Produce Cart</strong></td><td>Papayas (high volume), Apples, Spinach, Lauki, Torai, Greens</td><td>₹1,400</td></tr>
+                            <tr><td><strong>Supplements System</strong></td><td>Organic Isabgol (Psyllium Husk - 1 Large pack block)</td><td>₹130</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BASELINE_MASS = 71.0;
+        let userTrackingLogs = [];
+
+        document.getElementById('logDate').value = new Date().toISOString().split('T')[0];
+
+        window.onload = function() { loadInitialTrackingData(); };
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.dashboard-page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`page-${tabId}`).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function loadInitialTrackingData() {
+            const cache = localStorage.getItem('akash_fitness_logs');
+            if(cache) {
+                userTrackingLogs = JSON.parse(cache);
+            } else {
+                userTrackingLogs = [
+                    { date: "2026-07-15", weight: 71.0, steps: 3000, sleep: 8.0, piles: "1" },
+                    { date: "2026-07-16", weight: 70.7, steps: 6200, sleep: 7.5, piles: "2" },
+                    { date: "2026-07-17", weight: 70.4, steps: 8500, sleep: 8.0, piles: "1" }
+                ];
+                localStorage.setItem('akash_fitness_logs', JSON.stringify(userTrackingLogs));
+            }
+            renderTrackingTable();
+        }
+
+        function handleLogSubmission(event) {
+            event.preventDefault();
+            const entry = {
+                date: document.getElementById('logDate').value,
+                weight: parseFloat(document.getElementById('logWeight').value),
+                steps: parseInt(document.getElementById('logSteps').value),
+                sleep: parseFloat(document.getElementById('logSleep').value),
+                piles: document.getElementById('logPiles').value
+            };
+            userTrackingLogs = userTrackingLogs.filter(item => item.date !== entry.date);
+            userTrackingLogs.push(entry);
+            userTrackingLogs.sort((a,b) => new Date(a.date) - new Date(b.date));
+            localStorage.setItem('akash_fitness_logs', JSON.stringify(userTrackingLogs));
+            renderTrackingTable();
+            document.getElementById('metricsForm').reset();
+            document.getElementById('logDate').value = new Date().toISOString().split('T')[0];
+        }
+
+        function renderTrackingTable() {
+            const targetBody = document.getElementById('trackerTableRows');
+            targetBody.innerHTML = "";
+            if(userTrackingLogs.length === 0) {
+                targetBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No logs stored in localized engine data.</td></tr>`;
+                return;
+            }
+            userTrackingLogs.forEach(entry => {
+                const diff = (entry.weight - BASELINE_MASS).toFixed(2);
+                const diffText = diff <= 0 ? `${diff} kg` : `+${diff} kg`;
+                const color = diff <= 0 ? '#10b981' : '#ef4444';
+                let status = `<span style="color:#10b981;">Stabilized</span>`;
+                if(entry.piles >= 3) status = `<span style="color:#f59e0b; font-weight:700;">GI Stress Warn</span>`;
+                if(entry.piles >= 4) status = `<span style="color:#ef4444; font-weight:700;">Halt Straining</span>`;
+
+                targetBody.innerHTML += `
+                    <tr>
+                        <td><strong>${entry.date}</strong></td>
+                        <td>${entry.weight.toFixed(2)} kg</td>
+                        <td style="color:${color}; font-weight:700;">${diffText}</td>
+                        <td>${entry.steps.toLocaleString()} / 8,000</td>
+                        <td>${entry.sleep} Hrs</td>
+                        <td>${status}</td>
+                    </tr>`;
+            });
+        }
+
+        function downloadCSVData() {
+            if(userTrackingLogs.length === 0) return;
+            let csvContent = "data:text/csv;charset=utf-8,Date,Weight_kg,Daily_Steps,Sleep_Hours,Piles_Irritation_Level\n";
+            userTrackingLogs.forEach(r => { csvContent += `${r.date},${r.weight},${r.steps},${r.sleep},${r.piles}\n`; });
+            const anchor = document.createElement("a");
+            anchor.setAttribute("href", encodeURI(csvContent));
+            anchor.setAttribute("download", "akash_data.csv");
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+        }
+
+        function clearTrackingLogs() {
+            if(confirm("Confirm deletion of localized cache repository data updates?")) {
+                localStorage.removeItem('akash_fitness_logs');
+                loadInitialTrackingData();
+            }
+        }
+    </script>
+</body>
+</html>
