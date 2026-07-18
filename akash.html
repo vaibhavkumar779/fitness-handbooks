@@ -239,6 +239,11 @@
             userTrackingLogs.forEach(r => { csvContent += `${r.date},${r.weight},${r.steps}\n`; });
             const anchor = document.createElement("a"); anchor.setAttribute("href", encodeURI(csvContent)); anchor.setAttribute("download", "akash_data.csv"); anchor.click();
         }
+        // Strict Session Access Control Guard Hook
+        if (sessionStorage.getItem('auth_akash') !== 'authorized_clearance_granted') {
+            alert('Access Denied. Redirecting to central authentication gateway.');
+            window.location.href = 'index.html';
+        }
     </script>
 </body>
 </html>
