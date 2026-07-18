@@ -181,6 +181,8 @@
                     <h2>CSV Actions</h2>
                     <button onclick="downloadCSVData()" class="btn-action btn-csv">Download Updated CSV</button>
                     <button onclick="navigator.clipboard.writeText(userTrackingLogs.map(r=>Object.values(r).join(',')).join('\n')); alert('CSV content copied!');" style="background: #475569; margin-top: 10px;" class="btn-action">Copy Raw CSV Text</button>
+                                        <!-- PDF Generation Action Key -->
+                    <button onclick="window.print();" style="background: #475569; margin-top: 10px;" class="btn-action">Export PDF / Print Report</button>
                 </div>
             </div>
 
