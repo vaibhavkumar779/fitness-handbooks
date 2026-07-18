@@ -5,126 +5,325 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Fitness Command Portal</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Premium Core UI Enhancements overlaying baseline stylesheet */
+        .portal-body {
+            background: radial-gradient(circle at 0% 0%, #1e1b4b 0%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .portal-container {
+            width: 100%;
+            max-width: 960px;
+            animation: fadeInPortal 0.6s ease-out;
+        }
+
+        .portal-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.04em;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .portal-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .profile-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 320px;
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-card.bulking:hover { border-color: #3b82f6; box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.15); }
+        .profile-card.cutting:hover { border-color: #0d9488; box-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.15); }
+        .profile-card.shalini:hover { border-color: #8b5cf6; box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15); }
+
+        .profile-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .card-specs {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .card-specs p {
+            margin: 8px 0;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+            padding-bottom: 6px;
+        }
+        .card-specs p:last-child { border-bottom: none; padding-bottom: 0; }
+        .card-specs strong { color: #f8fafc; }
+
+        .btn-auth-trigger {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Glassmorphism Modal Overlay Setup */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-window {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 36px 32px;
+            border-radius: 24px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.active .modal-window {
+            transform: scale(1);
+        }
+
+        .modal-window input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #f8fafc;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 0.2em;
+            transition: border-color 0.2s;
+        }
+
+        .modal-window input[type="password"]:focus {
+            border-color: var(--modal-accent, #3b82f6);
+            outline: none;
+        }
+
+        .modal-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn-modal {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        @keyframes fadeInPortal {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body class="portal-body">
+
     <div class="container portal-container">
         <header class="portal-header">
-            <h1>Fitness Blueprint Command Portal</h1>
-            <p>Authentication Required. Select a profile and enter the secure authorization key.</p>
+            <h1>Fitness Engine Gateway</h1>
+            <p>Select your secure operations node to stream encrypted performance and logging data templates.</p>
         </header>
         
         <div class="portal-grid">
             <!-- Vaibhav Card -->
             <div class="profile-card bulking">
-                <h2>Vaibhav</h2>
-                <span class="badge badge-gain">Lean Muscle Gain</span>
-                <button onclick="promptLogin('vaibhav', 'vaibhav.html')" class="btn btn-gain" style="width:100%; border:none; margin-top:20px; cursor:pointer;">Authenticate Profile</button>
+                <div>
+                    <h2>Vaibhav</h2>
+                    <span class="badge badge-gain">Lean Muscle Gain</span>
+                    <div class="card-specs">
+                        <p>Mass Vector: <span>67kg ➔ <strong>75kg</strong></span></p>
+                        <p>Energy Limit: <span><strong>2200 kcal</strong></span></p>
+                        <p>Core Plan: <span>Gym Hypertrophy</span></p>
+                    </div>
+                </div>
+                <button onclick="promptLogin('vaibhav', 'vaibhav.html', '#3b82f6')" class="btn-auth-trigger btn-gain">Unlock Profile</button>
             </div>
 
             <!-- Akash Card -->
             <div class="profile-card cutting">
-                <h2>Akash</h2>
-                <span class="badge badge-loss">Fat Loss & Fitness</span>
-                <button onclick="promptLogin('akash', 'akash.html')" class="btn btn-loss" style="width:100%; border:none; margin-top:20px; cursor:pointer;">Authenticate Profile</button>
+                <div>
+                    <h2>Akash</h2>
+                    <span class="badge badge-loss">Fat Loss Strategy</span>
+                    <div class="card-specs">
+                        <p>Mass Vector: <span>71kg ➔ <strong>64kg</strong></span></p>
+                        <p>Energy Limit: <span><strong>1700 kcal</strong></span></p>
+                        <p>Core Plan: <span>Home Calisthenics</span></p>
+                    </div>
+                </div>
+                <button onclick="promptLogin('akash', 'akash.html', '#0d9488')" class="btn-auth-trigger btn-loss">Unlock Profile</button>
             </div>
 
             <!-- Shalini Card -->
             <div class="profile-card shalini">
-                <h2>Shalini</h2>
-                <span class="badge badge-shalini">Fat Loss & Core Rehab</span>
-                <button onclick="promptLogin('shalini', 'shalini.html')" class="btn btn-shalini" style="width:100%; border:none; margin-top:20px; cursor:pointer;">Authenticate Profile</button>
+                <div>
+                    <h2>Shalini</h2>
+                    <span class="badge badge-shalini">Mass Redirection</span>
+                    <div class="card-specs">
+                        <p>Mass Vector: <span>76kg ➔ <strong>65kg</strong></span></p>
+                        <p>Energy Limit: <span><strong>1800 kcal</strong></span></p>
+                        <p>Core Plan: <span>C-Section Safe Gym</span></p>
+                    </div>
+                </div>
+                <button onclick="promptLogin('shalini', 'shalini.html', '#8b5cf6')" class="btn-auth-trigger btn-shalini">Unlock Profile</button>
             </div>
         </div>
     </div>
 
-    <!-- Hidden Authentication Modal Window -->
-    <div id="authModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.9); align-items:center; justify-content:center; z-index:999;">
-        <div style="background:#1e293b; padding:30px; border-radius:12px; border:1px solid #334155; max-width:400px; width:90%; text-align:center;">
-            <h3 id="modalUser" style="margin-top:0; text-transform:capitalize; font-size:1.4rem;">Profile Login</h3>
-            <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:20px;">Enter the secure decryption passphrase below.</p>
-            <input type="password" id="passkeyInput" placeholder="Enter Security Pin/Password" style="width:100%; padding:12px; background:#0f172a; border:1px solid #334155; color:white; border-radius:6px; box-sizing:border-box; margin-bottom:15px; font-size:1rem;">
-            <div style="display:flex; gap:10px; justify-content:center;">
-                <button onclick="closeModal()" style="background:#475569; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; font-weight:600;">Cancel</button>
-                <button onclick="verifyPasskey()" style="background:#3b82f6; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; font-weight:600;">Verify Code</button>
+    <!-- Security Authorization Interface Modal Window -->
+    <div id="authModal" class="modal-overlay" onclick="if(event.target === this) closeModal();">
+        <div class="modal-window">
+            <h3 id="modalUser" style="margin: 0; font-size: 1.4rem; letter-spacing: -0.02em;">Profile Authorization</h3>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin: 6px 0 0 0;">Provide encrypted passphrase credentials.</p>
+            
+            <input type="password" id="passkeyInput" placeholder="••••••••">
+            
+            <div class="modal-actions">
+                <button onclick="closeModal()" class="btn-modal" style="background: #334155; color: #cbd5e1;">Abort</button>
+                <button onclick="verifyPasskey()" id="btnSubmitAuth" class="btn-modal" style="background: var(--modal-accent, #3b82f6); color: white;">Verify Key</button>
             </div>
         </div>
     </div>
-<script>
-    // Fully Synced SHA-256 Hash Look-up Table for Profile Passkeys
-    // Verified Strings: vaibhav123, akash123, shalini123
-    const SECURITY_TABLE = {
-        vaibhav: "6a100ad3e43feb450b679dc844e38cca4dcbf47fa956cd7c7370c28d308e1c52",
-        akash: "b1ca657a40b5435c6b546ff68e686e4ff077877d1d5f26f42299797a64d20c44",
-        shalini: "92a6f296bda39502aeecb60d47559dd0cfc5ab674225f52c9d1d47b4bbe869a8"
-    };
 
-    let activeTargetUser = '';
-    let activeTargetUrl = '';
+    <script>
+        // Production Verified Passkey SHA-256 Checksum Look-up Table
+        const SECURITY_TABLE = {
+            vaibhav: "6a100ad3e43feb450b679dc844e38cca4dcbf47fa956cd7c7370c28d308e1c52",
+            akash: "b1ca657a40b5435c6b546ff68e686e4ff077877d1d5f26f42299797a64d20c44",
+            shalini: "92a6f296bda39502aeecb60d47559dd0cfc5ab674225f52c9d1d47b4bbe869a8"
+        };
 
-    function promptLogin(username, redirectUrl) {
-        activeTargetUser = username;
-        activeTargetUrl = redirectUrl;
-        document.getElementById('modalUser').innerText = username.toUpperCase() + " - Access Verification";
-        document.getElementById('authModal').style.display = 'flex';
-        document.getElementById('passkeyInput').focus();
-    }
+        let activeTargetUser = '';
+        let activeTargetUrl = '';
 
-    function closeModal() {
-        document.getElementById('authModal').style.display = 'none';
-        document.getElementById('passkeyInput').value = '';
-    }
-
-    // High-reliability cryptographic conversion function using TextEncoder
-    async function sha256(string) {
-        const msgBuffer = new TextEncoder().encode(string);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        return hashHex;
-    }
-
-    async function verifyPasskey() {
-        // Automatically strip trailing white spaces from user input string
-        const inputRaw = document.getElementById('passkeyInput').value.trim();
-        
-        // Calculate the cryptographic hash value asynchronously
-        const computedHash = await sha256(inputRaw);
-        const targetHash = SECURITY_TABLE[activeTargetUser];
-        const isMatch = (computedHash === targetHash);
-
-        // --- DEV CONSOLE DIAGNOSTIC LOGS ---
-        console.log("=========================================");
-        console.log("🔒 PORTAL SECURITY DIAGNOSTIC ENGINE SYSTEM");
-        console.log("=========================================");
-        console.log("👤 Target User Account :", activeTargetUser);
-        console.log("⌨️ Text Entered         :", "'" + inputRaw + "'");
-        console.log("🧮 Computed SHA-256    :", computedHash);
-        console.log("🎯 Target Stored Hash  :", targetHash);
-        console.log("⚖️ Final Match Status  :", isMatch);
-        console.log("=========================================");
-
-        if (isMatch) {
-            console.log("✅ Validation Cleared! Granting active session storage keys...");
-            sessionStorage.setItem('auth_' + activeTargetUser, 'authorized_clearance_granted');
-            window.location.href = activeTargetUrl;
-        } else {
-            console.log("❌ Validation Failed. Mismatched string matrix patterns.");
+        function promptLogin(username, redirectUrl, themeColor) {
+            activeTargetUser = username;
+            activeTargetUrl = redirectUrl;
             
-            // --- AUTOMATED DEVELOPER SELF-HEALING HELP ROW ---
-            console.log("💡 DEVELOPER REPOSITORY UPDATE HINT:");
-            console.log("If you want the password you just typed to be the correct one, copy the line below and replace it inside your SECURITY_TABLE:");
-            console.log(`   ${activeTargetUser}: "${computedHash}",`);
-            console.log("=========================================");
+            document.getElementById('modalUser').innerText = username.toUpperCase() + " - GATEKEEPER";
+            const overlay = document.getElementById('authModal');
+            overlay.style.setProperty('--modal-accent', themeColor);
+            overlay.classList.add('active');
             
-            alert("Invalid security authorization access key entry. Try again.");
+            setTimeout(() => {
+                document.getElementById('passkeyInput').focus();
+            }, 50);
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').classList.remove('active');
             document.getElementById('passkeyInput').value = '';
         }
-    }
 
-    // Allow pressing the Enter key on a keyboard to submit the login modal instantly
-    document.getElementById('passkeyInput').addEventListener('keyup', function(e) {
-        if (e.key === 'Enter') verifyPasskey();
-    });
-</script>
+        async function sha256(string) {
+            const msgBuffer = new TextEncoder().encode(string);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function verifyPasskey() {
+            const inputRaw = document.getElementById('passkeyInput').value.trim();
+            if(!inputRaw) return;
+            
+            const computedHash = await sha256(inputRaw);
+            const targetHash = SECURITY_TABLE[activeTargetUser];
+
+            // Clean, anonymous production telemetry logging. Absolutely no cleartext data leaks.
+            console.log("⚙️ System Event: Auth verification request initialized for signature node [" + activeTargetUser + "].");
+
+            if (computedHash === targetHash) {
+                console.log("⚡ Success: Cryptographic identity check cleared for node [" + activeTargetUser + "]. Access granted.");
+                sessionStorage.setItem('auth_' + activeTargetUser, 'authorized_clearance_granted');
+                window.location.href = activeTargetUrl;
+            } else {
+                console.warn("⚠️ Alert: Cryptographic signature mismatch detected for signature node [" + activeTargetUser + "]. Access blocked.");
+                alert("Invalid security authorization access key entry. Try again.");
+                document.getElementById('passkeyInput').value = '';
+                document.getElementById('passkeyInput').focus();
+            }
+        }
+
+        document.getElementById('passkeyInput').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') verifyPasskey();
+        });
+    </script>
 </body>
 </html>
