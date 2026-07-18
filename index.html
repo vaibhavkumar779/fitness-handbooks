@@ -50,11 +50,11 @@
         </div>
     </div>
 <script>
-    // SHA-256 Hash Look-up Table for Profile Passkeys
-    // Note: Shalini's token has been completely updated based on your console readout data.
+    // Fully Synced SHA-256 Hash Look-up Table for Profile Passkeys
+    // Verified Strings: vaibhav123, akash123, shalini123
     const SECURITY_TABLE = {
-        vaibhav: "b7e462d73356e79213fb38db9df530ff02fae80735e024225026ff4ed1f24d31",
-        akash: "277e997676fb1e9d1bf779c16262b9a7be27c24f6f4aa4e6e22c42fc6976a4ba",
+        vaibhav: "6a100ad3e43feb450b679dc844e38cca4dcbf47fa956cd7c7370c28d308e1c52",
+        akash: "b1ca657a40b5435c6b546ff68e686e4ff077877d1d5f26f42299797a64d20c44",
         shalini: "92a6f296bda39502aeecb60d47559dd0cfc5ab674225f52c9d1d47b4bbe869a8"
     };
 
@@ -84,7 +84,7 @@
     }
 
     async function verifyPasskey() {
-        // Automatically strip trailing white spaces from input
+        // Automatically strip trailing white spaces from user input string
         const inputRaw = document.getElementById('passkeyInput').value.trim();
         
         // Calculate the cryptographic hash value asynchronously
