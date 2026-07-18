@@ -11,9 +11,6 @@ To enter your private performance terminal:
 2. Identify your personal card component interface container block on the screen grid matrix.
 3. Tap or click the **"Unlock Profile"** button located at the bottom of your profile card.
 4. Input your secret authentication passcode into the system gatekeeper secure modal popup:
-   *   **Vaibhav Passkey Vector:** `vaibhav123`
-   *   **Akash Passkey Vector:** `akash123`
-   *   **Shalini Passkey Vector:** `shalini123`
 5. Press **Enter** on your keyboard or tap **"Verify Key"** to establish active gateway validation.
 
 *Note: If you attempt to access a dashboard layout subpage directly via the URL bar without typing your key, the built-in system hooks will block your browser context, prompt an alert, and bounce you back to the home router page.*
