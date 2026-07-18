@@ -253,6 +253,12 @@
     </div>
 
     <script>
+        // Strict Session Access Control Guard Hook
+        if (sessionStorage.getItem('auth_shalini') !== 'authorized_clearance_granted') {
+            alert('Access Denied. Redirecting to central authentication gateway.');
+            window.location.href = 'index.html';
+        }
+
         const BASELINE_MASS = 76.0; let userTrackingLogs = [];
         window.onload = function() { loadInitialTrackingData(); };
         function switchTab(tabId) {
@@ -282,11 +288,6 @@
             let csvContent = "data:text/csv;charset=utf-8,Date,Weight_kg,Active_Minutes\n";
             userTrackingLogs.forEach(r => { csvContent += `${r.date},${r.weight},${r.steps}\n`; });
             const anchor = document.createElement("a"); anchor.setAttribute("href", encodeURI(csvContent)); anchor.setAttribute("download", "shalini_data.csv"); anchor.click();
-        }
-        // Strict Session Access Control Guard Hook
-        if (sessionStorage.getItem('auth_shalini') !== 'authorized_clearance_granted') {
-            alert('Access Denied. Redirecting to central authentication gateway.');
-            window.location.href = 'index.html';
         }
     </script>
 </body>
