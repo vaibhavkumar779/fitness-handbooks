@@ -49,49 +49,75 @@
             </div>
         </div>
     </div>
-    <script>
-        // High-reliability look-up table for profile passkeys.
-        // You can modify these directly to any custom passwords you want!
-        const SECURITY_TABLE = {
-            vaibhav: "vaibhav123",
-            akash: "akash123",
-            shalini: "shalini123"
-        };
-    
-        let activeTargetUser = '';
-        let activeTargetUrl = '';
-    
-        function promptLogin(username, redirectUrl) {
-            activeTargetUser = username;
-            activeTargetUrl = redirectUrl;
-            document.getElementById('modalUser').innerText = username.toUpperCase() + " - Access Verification";
-            document.getElementById('authModal').style.display = 'flex';
-            document.getElementById('passkeyInput').focus();
-        }
-    
-        function closeModal() {
-            document.getElementById('authModal').style.display = 'none';
+<script>
+    // SHA-256 Look-up Table for Profile Passkeys
+    // Stored Hashes correspond to: vaibhav123, akash123, shalini123
+    const SECURITY_TABLE = {
+        vaibhav: "b7e462d73356e79213fb38db9df530ff02fae80735e024225026ff4ed1f24d31",
+        akash: "277e997676fb1e9d1bf779c16262b9a7be27c24f6f4aa4e6e22c42fc6976a4ba",
+        shalini: "4920257e84183853fb7ea35e5d16d01db919ff7f29b4b76a0a4c8a2b16866164"
+    };
+
+    let activeTargetUser = '';
+    let activeTargetUrl = '';
+
+    function promptLogin(username, redirectUrl) {
+        activeTargetUser = username;
+        activeTargetUrl = redirectUrl;
+        document.getElementById('modalUser').innerText = username.toUpperCase() + " - Access Verification";
+        document.getElementById('authModal').style.display = 'flex';
+        document.getElementById('passkeyInput').focus();
+    }
+
+    function closeModal() {
+        document.getElementById('authModal').style.display = 'none';
+        document.getElementById('passkeyInput').value = '';
+    }
+
+    // High-reliability cryptographic conversion function using TextEncoder
+    async function sha256(string) {
+        const msgBuffer = new TextEncoder().encode(string);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+    }
+
+    async function verifyPasskey() {
+        // Automatically strip trailing white spaces
+        const inputRaw = document.getElementById('passkeyInput').value.trim();
+        
+        // Calculate the cryptographic hash value asynchronously
+        const computedHash = await sha256(inputRaw);
+        const targetHash = SECURITY_TABLE[activeTargetUser];
+        const isMatch = (computedHash === targetHash);
+
+        // --- DEV CONSOLE DIAGNOSTIC LOGS ---
+        console.log("=========================================");
+        console.log("🔒 PORTAL SECURITY DIAGNOSTIC ENGINE SYSTEM");
+        console.log("=========================================");
+        console.log("👤 Target User Account :", activeTargetUser);
+        console.log("⌨️ Text Entered (Trimming Applied):", "'" + inputRaw + "'");
+        console.log("🧮 Computed SHA-256 Hash Value  :", computedHash);
+        console.log("🎯 Target Stored Hash Value    :", targetHash);
+        console.log("⚖️ Final Comparison Matches    :", isMatch);
+        console.log("=========================================");
+
+        if (isMatch) {
+            console.log("✅ Validation Cleared! Granting active session storage keys...");
+            sessionStorage.setItem('auth_' + activeTargetUser, 'authorized_clearance_granted');
+            window.location.href = activeTargetUrl;
+        } else {
+            console.log("❌ Validation Failed. Mismatched string matrix patterns.");
+            alert("Invalid security authorization access key entry. Try again.");
             document.getElementById('passkeyInput').value = '';
         }
-    
-        function verifyPasskey() {
-            // .trim() automatically removes accidental spaces from mobile inputs
-            const inputRaw = document.getElementById('passkeyInput').value.trim();
-    
-            if (inputRaw === SECURITY_TABLE[activeTargetUser]) {
-                // Grant authorization clearance via temporary session storage keys
-                sessionStorage.setItem('auth_' + activeTargetUser, 'authorized_clearance_granted');
-                window.location.href = activeTargetUrl;
-            } else {
-                alert("Invalid security authorization access key entry. Try again.");
-                document.getElementById('passkeyInput').value = '';
-            }
-        }
-    
-        // Allow pressing the Enter key on a keyboard to submit the login modal instantly
-        document.getElementById('passkeyInput').addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') verifyPasskey();
-        });
-    </script>
+    }
+
+    // Allow pressing Enter key on your keyboard to submit the verification form
+    document.getElementById('passkeyInput').addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') verifyPasskey();
+    });
+</script>
 </body>
 </html>
