@@ -13,12 +13,12 @@
         <header class="dashboard-header">
             <div class="header-title">
                 <h1>Vaibhav's Muscle Build Command Center</h1>
-                <p>Constraint: 15-17 Hrs Daily Sitting | Budget: ₹5,000 - ₹6,000 INR Phase</p>
+                <p>Constraint: 15-17 Hrs Daily Sitting | Budget Frame: ₹6,000 - ₹7,000 INR</p>
             </div>
             <div class="header-stats">
                 <div class="stat-pill"><span>Calorie Target</span><strong>2200</strong></div>
                 <div class="stat-pill"><span>Protein Cap</span><strong>134g</strong></div>
-                <div class="stat-pill"><span>Post-Gym</span><strong>Eggs Only</strong></div>
+                <div class="stat-pill"><span>Post-Gym</span><strong>Boiled Eggs</strong></div>
             </div>
         </header>
 
@@ -40,12 +40,12 @@
                         </thead>
                         <tbody>
                             <tr><td><strong>Sedentary Hazard</strong></td><td>15 to 17 Hours Sitting Daily</td><td>Extreme desk lock requires active pacing loops every 90 minutes to reactivate glute pathways.</td></tr>
-                            <tr><td><strong>Current Weight / Target</strong></td><td>67 kg / 75 kg</td><td>Lean mass gain focus with a hard ceiling on extra fat accumulation.</td></tr>
+                            <tr><td><strong>Current / Target Mass</strong></td><td>67 kg / 75 kg</td><td>Lean mass gain focus with a hard ceiling on extra fat accumulation.</td></tr>
                             <tr><td><strong>Height Dimensions</strong></td><td>174.6 cm</td><td>Fixed structural layout anchor scale.</td></tr>
                             <tr><td><strong>Calculated BMI Baseline</strong></td><td>21.98 kg/m² (Normal Weight)</td><td>Targeting incremental metabolic climb to 24.61 kg/m² via controlled surplus.</td></tr>
                             <tr><td><strong>Left Wrist Injury Filter</strong></td><td>Chronic Structural Impairment</td><td>Strict prohibition of open twisting grips under weight loads; vertical alignment tracking.</td></tr>
                             <tr><td><strong>Post-Septoplasty Care</strong></td><td>Surgery Date: 22 May 2026</td><td>Fully healed baseline frame. Monitor breathing patterns during heavy bracing intervals.</td></tr>
-                            <tr><td><strong>Financial Boundary</strong></td><td>₹5,000 - ₹6,000 / Month Capped</td><td>Relying heavily on bulk eggs and home-cooked soy choices to control premium grocery spending.</td></tr>
+                            <tr><td><strong>Financial Boundary</strong></td><td>₹6,000 - ₹7,000 / Month Max</td><td>Adjusted budget parameters to seamlessly manage native wholesale market shifts.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -358,18 +358,19 @@
             </div>
             
             <div class="card">
-                <h2>Monthly Food Budget System Breakdown (₹5,000 - ₹6,000 Blueprint Capped)</h2>
+                <h2>Monthly Food Budget System Breakdown (₹6,000 - ₹7,000 Blueprint Capped)</h2>
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr><th>Target Category Allocation</th><th>Items Included Inventory</th><th>Projected Investment Share</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td><strong>Egg Inventory (Bulk Crates)</strong></td><td>4 Whole Eggs / Whites daily post-workout (approx. 120 eggs monthly total)</td><td>₹900</td></tr>
-                            <tr><td><strong>Dairy Resources</strong></td><td>Low-Fat Paneer slabs (local wholesale vendor) + fresh dahi setting tins</td><td>₹1,800</td></tr>
-                            <tr><td><strong>Butcher Provisions</strong></td><td>Fresh Cleaned Local Chicken Breast (approx. 3kg raw monthly block)</td><td>₹900</td></tr>
-                            <tr><td><strong>Staples & Dry Goods</strong></td><td>Whole Chakki Wheat Atta, Non-aromatic Rice bags, Bulk Soya chunks, Rolled Oats</td><td>₹1,200</td></tr>
-                            <tr><td><strong>Produce Cart</strong></td><td>Spinach, Cauliflower, Bananas, Apples (July-Jan seasonal buys)</td><td>₹700</td></tr>
+                            <tr><td><strong>Egg Inventory (Bulk Crates)</strong></td><td>4 Whole Eggs / Whites daily post-workout (120 eggs monthly @ ₹300 per 30 crate)</td><td><strong>₹1,200</strong></td></tr>
+                            <tr><td><strong>Dairy Resources</strong></td><td>Low-Fat Paneer slabs (local wholesale vendor) + fresh dahi setting tins</td><td>₹2,000</td></tr>
+                            <tr><td><strong>Butcher Provisions</strong></td><td>Fresh Cleaned Local Chicken Breast (approx. 3kg raw monthly block)</td><td>₹1,000</td></tr>
+                            <tr><td><strong>Staples & Dry Goods</strong></td><td>Whole Chakki Wheat Atta, Non-aromatic Rice bags, Bulk Soya chunks, Rolled Oats</td><td>₹1,300</td></tr>
+                            <tr><td><strong>Produce Cart</strong></td><td>Spinach, Cauliflower, Bananas, Apples (July-Jan seasonal buys)</td><td>₹800</td></tr>
+                            <tr><td><strong>Total Projected Cost</strong></td><td><strong>Comprehensive Protein Management Track</strong></td><td><strong>~₹6,300 / Month</strong></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -378,7 +379,6 @@
     </div>
 
     <script>
-        // Strict Session Access Control Guard Hook
         if (sessionStorage.getItem('auth_vaibhav') !== 'authorized_clearance_granted') {
             alert('Access Denied. Redirecting to central authentication gateway.');
             window.location.href = 'index.html';
@@ -400,9 +400,7 @@
             const cache = localStorage.getItem('vaibhav_fitness_logs');
             if(cache) { userTrackingLogs = JSON.parse(cache); } 
             else {
-                userTrackingLogs = [
-                    { date: "2026-07-15", weight: 67.0, steps: 500, sleep: 7.0, wrist: "1" }
-                ];
+                userTrackingLogs = [{ date: "2026-07-15", weight: 67.0, steps: 500, sleep: 7.0, wrist: "1" }];
                 localStorage.setItem('vaibhav_fitness_logs', JSON.stringify(userTrackingLogs));
             }
             renderTrackingTable();
