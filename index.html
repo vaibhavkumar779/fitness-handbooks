@@ -5,197 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Fitness Command Portal</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Premium Core UI Enhancements overlaying baseline stylesheet */
-        .portal-body {
-            background: radial-gradient(circle at 0% 0%, #1e1b4b 0%, #0f172a 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .portal-container {
-            width: 100%;
-            max-width: 960px;
-            animation: fadeInPortal 0.6s ease-out;
-        }
-
-        .portal-header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #f8fafc, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.04em;
-        }
-
-        .portal-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 900px) {
-            .portal-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        .profile-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 32px 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 320px;
-            box-sizing: border-box;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .profile-card:hover {
-            transform: translateY(-8px);
-            background: rgba(30, 41, 59, 0.9);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-        }
-
-        .profile-card.bulking:hover { border-color: #3b82f6; box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.15); }
-        .profile-card.cutting:hover { border-color: #0d9488; box-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.15); }
-        .profile-card.shalini:hover { border-color: #8b5cf6; box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.15); }
-
-        .profile-card h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 0 12px 0;
-            letter-spacing: -0.02em;
-        }
-
-        .card-specs {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 16px;
-            margin: 20px 0;
-        }
-
-        .card-specs p {
-            margin: 8px 0;
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-            padding-bottom: 6px;
-        }
-        .card-specs p:last-child { border-bottom: none; padding-bottom: 0; }
-        .card-specs strong { color: #f8fafc; }
-
-        .btn-auth-trigger {
-            width: 100%;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        /* Glassmorphism Modal Overlay Setup */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-window {
-            background: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 36px 32px;
-            border-radius: 24px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .modal-overlay.active .modal-window {
-            transform: scale(1);
-        }
-
-        .modal-window input[type="password"] {
-            width: 100%;
-            padding: 14px;
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: #f8fafc;
-            border-radius: 10px;
-            box-sizing: border-box;
-            margin: 20px 0;
-            font-size: 1.1rem;
-            text-align: center;
-            letter-spacing: 0.2em;
-            transition: border-color 0.2s;
-        }
-
-        .modal-window input[type="password"]:focus {
-            border-color: var(--modal-accent, #3b82f6);
-            outline: none;
-        }
-
-        .modal-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .btn-modal {
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        @keyframes fadeInPortal {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
 </head>
 <body class="portal-body">
-
     <div class="container portal-container">
         <header class="portal-header">
             <h1>Fitness Engine Gateway</h1>
@@ -239,7 +50,7 @@
                     <div class="card-specs">
                         <p>Mass Vector: <span>76kg ➔ <strong>65kg</strong></span></p>
                         <p>Energy Limit: <span><strong>1800 kcal</strong></span></p>
-                        <p>Core Plan: <span>C-Section Safe Gym</span></p>
+                        <p>Core Plan: <span>Gym or Home Track</span></p>
                     </div>
                 </div>
                 <button onclick="promptLogin('shalini', 'shalini.html', '#8b5cf6')" class="btn-auth-trigger btn-shalini">Unlock Profile</button>
@@ -252,9 +63,7 @@
         <div class="modal-window">
             <h3 id="modalUser" style="margin: 0; font-size: 1.4rem; letter-spacing: -0.02em;">Profile Authorization</h3>
             <p style="color: #94a3b8; font-size: 0.85rem; margin: 6px 0 0 0;">Provide encrypted passphrase credentials.</p>
-            
             <input type="password" id="passkeyInput" placeholder="••••••••">
-            
             <div class="modal-actions">
                 <button onclick="closeModal()" class="btn-modal" style="background: #334155; color: #cbd5e1;">Abort</button>
                 <button onclick="verifyPasskey()" id="btnSubmitAuth" class="btn-modal" style="background: var(--modal-accent, #3b82f6); color: white;">Verify Key</button>
@@ -263,7 +72,6 @@
     </div>
 
     <script>
-        // Production Verified Passkey SHA-256 Checksum Look-up Table
         const SECURITY_TABLE = {
             vaibhav: "6a100ad3e43feb450b679dc844e38cca4dcbf47fa956cd7c7370c28d308e1c52",
             akash: "b1ca657a40b5435c6b546ff68e686e4ff077877d1d5f26f42299797a64d20c44",
@@ -276,15 +84,11 @@
         function promptLogin(username, redirectUrl, themeColor) {
             activeTargetUser = username;
             activeTargetUrl = redirectUrl;
-            
             document.getElementById('modalUser').innerText = username.toUpperCase() + " - GATEKEEPER";
             const overlay = document.getElementById('authModal');
             overlay.style.setProperty('--modal-accent', themeColor);
             overlay.classList.add('active');
-            
-            setTimeout(() => {
-                document.getElementById('passkeyInput').focus();
-            }, 50);
+            setTimeout(() => { document.getElementById('passkeyInput').focus(); }, 50);
         }
 
         function closeModal() {
@@ -302,22 +106,13 @@
         async function verifyPasskey() {
             const inputRaw = document.getElementById('passkeyInput').value.trim();
             if(!inputRaw) return;
-            
             const computedHash = await sha256(inputRaw);
-            const targetHash = SECURITY_TABLE[activeTargetUser];
-
-            // Clean, anonymous production telemetry logging. Absolutely no cleartext data leaks.
-            console.log("⚙️ System Event: Auth verification request initialized for signature node [" + activeTargetUser + "].");
-
-            if (computedHash === targetHash) {
-                console.log("⚡ Success: Cryptographic identity check cleared for node [" + activeTargetUser + "]. Access granted.");
+            if (computedHash === SECURITY_TABLE[activeTargetUser]) {
                 sessionStorage.setItem('auth_' + activeTargetUser, 'authorized_clearance_granted');
                 window.location.href = activeTargetUrl;
             } else {
-                console.warn("⚠️ Alert: Cryptographic signature mismatch detected for signature node [" + activeTargetUser + "]. Access blocked.");
                 alert("Invalid security authorization access key entry. Try again.");
                 document.getElementById('passkeyInput').value = '';
-                document.getElementById('passkeyInput').focus();
             }
         }
 
