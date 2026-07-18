@@ -78,7 +78,7 @@
         <div id="page-workout" class="dashboard-page">
             <div class="card">
                 <h2>Phase A: Strict Intra-Abdominal Pressure Filter (Essential Guard Rules)</h2>
-                <div class="alert-box danger">
+                <div class="alert-box danger" style="background-color: #451a03; border-left: 4px solid #f97316; color: #ffedd5;">
                     <strong>Anti-Straining Breathing Protocol (Piles Protection):</strong> Never hold your breath or push down into your pelvic floor when an exercise gets tough. Always keep your mouth slightly open and <strong>exhale through pursed lips during the hardest phase of a movement</strong>. If you feel internal pressure building up in your lower abdomen, stop the set immediately.
                 </div>
             </div>
@@ -196,7 +196,7 @@
                     <h2>CSV Actions</h2>
                     <div style="display:flex; flex-direction:column; gap:8px;">
                         <button onclick="downloadCSVData()" class="btn-action btn-csv">Download Updated CSV</button>
-                        <button onclick="navigator.clipboard.writeText(userTrackingLogs.map(r=>Object.values(r).join(',')).join('\n')); alert('CSV content copied!');" class="btn-action" style="background: #475569;">Copy Raw CSV Text</button>
+                        <button onclick="navigator.clipboard.writeText(userTrackingLogs.map(r=>Object.values(r).join(',')).join('\n')); alert('CSV content copied!');" style="background: #475569;" class="btn-action">Copy Raw CSV Text</button>
                         <button onclick="window.print();" class="btn-action" style="background: #475569;">Export PDF / Print Report</button>
                     </div>
                 </div>
@@ -208,10 +208,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Weight</th>
+                                <th>Date Logged</th>
+                                <th>Body Weight</th>
                                 <th>Net Progress</th>
-                                <th>Steps</th>
+                                <th>Daily Steps</th>
                                 <th>Sleep Volume</th>
                                 <th>GI Comfort Status</th>
                             </tr>
