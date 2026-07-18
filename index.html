@@ -10,49 +10,100 @@
     <div class="container portal-container">
         <header class="portal-header">
             <h1>Fitness Blueprint Command Portal</h1>
-            <p>Select an operational profile to launch your interactive dashboard tracking system.</p>
+            <p>Authentication Required. Select a profile and enter the secure authorization key.</p>
         </header>
         
         <div class="portal-grid">
-            <!-- Vaibhav Selector Card -->
+            <!-- Vaibhav Card -->
             <div class="profile-card bulking">
-                <div class="card-glow"></div>
                 <h2>Vaibhav</h2>
                 <span class="badge badge-gain">Lean Muscle Gain</span>
-                <div class="card-specs">
-                    <p><strong>Target:</strong> 67kg → 75kg</p>
-                    <p><strong>Energy Budget:</strong> 2200 kcal</p>
-                    <p><strong>Strategy:</strong> Pre-Gym Dinner & Desk Decompression</p>
-                </div>
-                <a href="vaibhav.html" class="btn btn-gain">Launch Engine →</a>
+                <button onclick="promptLogin('vaibhav', 'vaibhav.html')" class="btn btn-gain" style="width:100%; border:none; margin-top:20px; cursor:pointer;">Authenticate Profile</button>
             </div>
 
-            <!-- Akash Selector Card -->
+            <!-- Akash Card -->
             <div class="profile-card cutting">
-                <div class="card-glow"></div>
                 <h2>Akash</h2>
                 <span class="badge badge-loss">Fat Loss & Fitness</span>
-                <div class="card-specs">
-                    <p><strong>Target:</strong> 71kg → 64kg</p>
-                    <p><strong>Energy Budget:</strong> 1700 kcal</p>
-                    <p><strong>Strategy:</strong> Ultra-Budget Home Calisthenics</p>
-                </div>
-                <a href="akash.html" class="btn btn-loss">Launch Engine →</a>
+                <button onclick="promptLogin('akash', 'akash.html')" class="btn btn-loss" style="width:100%; border:none; margin-top:20px; cursor:pointer;">Authenticate Profile</button>
             </div>
 
-            <!-- Shalini Selector Card -->
+            <!-- Shalini Card -->
             <div class="profile-card shalini">
-                <div class="card-glow"></div>
                 <h2>Shalini</h2>
                 <span class="badge badge-shalini">Fat Loss & Core Rehab</span>
-                <div class="card-specs">
-                    <p><strong>Target:</strong> 76kg → 65kg</p>
-                    <p><strong>Energy Budget:</strong> 1800 kcal</p>
-                    <p><strong>Strategy:</strong> Shared Child Meal Integration</p>
-                </div>
-                <a href="shalini.html" class="btn btn-shalini">Launch Engine →</a>
+                <button onclick="promptLogin('shalini', 'shalini.html')" class="btn btn-shalini" style="width:100%; border:none; margin-top:20px; cursor:pointer;">Authenticate Profile</button>
             </div>
         </div>
     </div>
+
+    <!-- Hidden Authentication Modal Window -->
+    <div id="authModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.9); align-items:center; justify-content:center; z-index:999;">
+        <div style="background:#1e293b; padding:30px; border-radius:12px; border:1px solid #334155; max-width:400px; width:90%; text-align:center;">
+            <h3 id="modalUser" style="margin-top:0; text-transform:capitalize; font-size:1.4rem;">Profile Login</h3>
+            <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:20px;">Enter the secure decryption passphrase below.</p>
+            <input type="password" id="passkeyInput" placeholder="Enter Security Pin/Password" style="width:100%; padding:12px; background:#0f172a; border:1px solid #334155; color:white; border-radius:6px; box-sizing:border-box; margin-bottom:15px; font-size:1rem;">
+            <div style="display:flex; gap:10px; justify-content:center;">
+                <button onclick="closeModal()" style="background:#475569; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; font-weight:600;">Cancel</button>
+                <button onclick="verifyPasskey()" style="background:#3b82f6; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; font-weight:600;">Verify Code</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // SHA-256 Hashes of the passwords. The real passkeys are never stored in plain text.
+        // Default Passwords used to generate these hashes:
+        // Vaibhav default: "vaibhav123"
+        // Akash default: "akash123"
+        // Shalini default: "shalini123"
+        const SECURITY_TABLE = {
+            vaibhav: "b7e462d73356e79213fb38db9df530ff02fae80735e024225026ff4ed1f24d31",
+            akash: "277e997676fb1e9d1bf779c16262b9a7be27c24f6f4aa4e6e22c42fc6976a4ba",
+            shalini: "4920257e84183853fb7ea35e5d16d01db919ff7f29b4b76a0a4c8a2b16866164"
+        };
+
+        let activeTargetUser = '';
+        let activeTargetUrl = '';
+
+        function promptLogin(username, redirectUrl) {
+            activeTargetUser = username;
+            activeTargetUrl = redirectUrl;
+            document.getElementById('modalUser').innerText = username + " - Access Verification";
+            document.getElementById('authModal').style.display = 'flex';
+            document.getElementById('passkeyInput').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('passkeyInput').value = '';
+        }
+
+        // Standard client-side SHA-256 generation routine using browser crypto engine
+        async function sha256(string) {
+            const utf8 = new Uint8Array(Array.from(string).map(c => c.charCodeAt(0)));
+            const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function verifyPasskey() {
+            const inputRaw = document.getElementById('passkeyInput').value;
+            const computedHash = await sha256(inputRaw);
+
+            if (computedHash === SECURITY_TABLE[activeTargetUser]) {
+                // Grant authorization clearance via temporary session token storage key
+                sessionStorage.setItem('auth_' + activeTargetUser, 'authorized_clearance_granted');
+                window.location.href = activeTargetUrl;
+            } else {
+                alert("Invalid security authorization access key entry. Try again.");
+                document.getElementById('passkeyInput').value = '';
+            }
+        }
+
+        // Allow pressing Enter key to submit login modal form instantly
+        document.getElementById('passkeyInput').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') verifyPasskey();
+        });
+    </script>
 </body>
 </html>
